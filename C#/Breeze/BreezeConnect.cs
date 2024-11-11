@@ -2093,10 +2093,27 @@ namespace Breeze
                 else if (productType.ToLower() == "opt")
                     outputData.Add("product_type", "Options");
                 string dateString = "";
-                foreach (var date in new ArraySegment<string>(stockData[0].Split('-'), 2, 5))
+
+                //var splitData = stockData[0].Split('-');
+                //int size = splitData.Length;
+
+                if (productType.ToLower() == "fut")
                 {
-                    dateString += date + "-";
+                    foreach (var date in new ArraySegment<string>(stockData[0].Split('-'), 2, 3))
+                    {
+                        dateString += date + "-";
+                    }
+
                 }
+                else if (productType.ToLower() == "opt")
+                {
+                    foreach (var date in new ArraySegment<string>(stockData[0].Split('-'), 2, 5))
+                    {
+                        dateString += date + "-";
+                    }
+                }
+
+
                 if (!outputData.ContainsKey("expiry_date")) outputData.Add("expiry_date", dateString.Remove(dateString.Length - 1, 1));
                 if (stockData[0].Split('-').Length > 5)
                 {
