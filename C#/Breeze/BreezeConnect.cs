@@ -723,7 +723,7 @@ namespace Breeze
         private string[] intervalList = { "1minute", "5minute", "30minute", "1day" };
         private string[] exchangeCodeList = { "nse", "nfo","bfo","bse" };
         private string[] nfoProductTypeList = { "futures", "options", "futureplus", "optionplus" };
-        private string[] productTypeList = { "futures", "options", "futureplus", "optionplus", "cash", "eatm", "margin" };
+        private string[] productTypeList = { "futures", "options", "futureplus", "optionplus", "cash", "eatm", "margin","mtf" };
         private string[] rightList = { "call", "put", "others" };
         private string[] actionList = { "buy", "sell" };
         private string[] orderTypeList = { "limit", "market", "stoploss" };
@@ -1020,7 +1020,7 @@ namespace Breeze
                 return new Dictionary<string, object>{
                     { "Success", ""},
                     { "Status", 500},
-                    { "Error", "productType should be either 'futures', 'options', 'futureplus', 'optionplus', 'cash', 'eatm' or 'margin'" }
+                    { "Error", "productType should be either 'futures', 'options', 'futureplus', 'optionplus', 'cash', 'eatm', 'mtf' or 'margin'" }
                 };
             else if (!string.IsNullOrEmpty(right) && !checkList(rightList, right))
                 return new Dictionary<string, object>{
@@ -1107,7 +1107,7 @@ namespace Breeze
                 return new Dictionary<string, object>{
                     { "Success", ""},
                     { "Status", 500},
-                    { "Error", "productType should be either 'futures', 'options', 'futureplus', 'optionplus', 'cash', 'eatm' or 'margin'" }
+                    { "Error", "productType should be either 'futures', 'options', 'futureplus', 'optionplus', 'cash', 'eatm', 'mtf' or 'margin'" }
                 };
             else if (string.IsNullOrEmpty(action))
                 return new Dictionary<string, object>{
@@ -1166,7 +1166,7 @@ namespace Breeze
                 {"quantity", quantity},
                 {"price", price},
                 {"validity", validity},
-                //{"user_remark", userRemark}
+                {"user_remark", userRemark }
             };
             if (!string.IsNullOrEmpty(stoploss))
                 requestBody.Add("stoploss", stoploss);
@@ -1512,7 +1512,7 @@ namespace Breeze
                 return new Dictionary<string, object>{
                     { "Success", ""},
                     { "Status", 500},
-                    { "Error", "productType should be either 'futures', 'options', 'futureplus', 'optionplus', 'cash', 'eatm', or 'margin'" }
+                    { "Error", "productType should be either 'futures', 'options', 'futureplus', 'optionplus', 'cash', 'eatm', 'mtf' or 'margin'" }
                 };
             else if (!string.IsNullOrEmpty(right) && !checkList(rightList, right))
                 return new Dictionary<string, object>{
@@ -1674,7 +1674,7 @@ namespace Breeze
                 return new Dictionary<string, object>{
                     { "Success", ""},
                     { "Status", 500},
-                    { "Error", "productType should be either 'futures', 'options', 'futureplus', 'optionplus', 'cash', 'eatm', or 'margin'" }
+                    { "Error", "productType should be either 'futures', 'options', 'futureplus', 'optionplus', 'cash', 'eatm','mtf' or 'margin'" }
                 };
             else if (!string.IsNullOrEmpty(action) && !checkList(actionList, action))
                 return new Dictionary<string, object>{
